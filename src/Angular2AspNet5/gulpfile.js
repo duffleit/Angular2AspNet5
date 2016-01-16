@@ -4,8 +4,6 @@ var inject = require('gulp-inject');
 var clean = require('gulp-clean');
 var runSequence = require('run-sequence');
 
-//configuration:
-
 var paths = {
     webroot: "./" + project.webroot + "/",
     www_index: "index.html",
@@ -21,13 +19,13 @@ var frontedNpmDependencies = {
         "./node_modules/angular2/bundles/angular2.js"
     ],
     css: [
-        "node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "./node_modules/bootstrap/dist/css/bootstrap.theme.min.css"
     ]
 }
 
 gulp.task('cleanFrontedNpmDependencies', function () {
     return gulp.src(paths.webroot + paths.www_external, { read: false }).pipe(clean());
-
 });
 
 gulp.task('copyFrontedNpmDependencies', function () {
@@ -46,7 +44,9 @@ gulp.task('injectFrontedNpmDependencies', function () {
         dependencyPathes[dependencyPathes.length] = paths.webroot + paths.www_external + "css/" + splittedCssName[splittedCssName.length - 1];
     }
 
-    gulp.src(paths.webroot + paths.www_external)
+    console.log(dependencyPathes);
+
+    gulp.src(paths.webroot + paths.www_index)
         .pipe(inject(gulp.src(dependencyPathes, { read: false }), { relative: true }))
         .pipe(gulp.dest(paths.webroot));
 });

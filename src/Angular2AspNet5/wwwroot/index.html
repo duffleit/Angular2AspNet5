@@ -7,15 +7,15 @@
     <!-- don't added scripts/css here, as they get injected automatically by gulp task "updateFrontedDependencies"-->
 
     <!-- inject:js -->
-    <script src="external/js/system.js"></script>
-    <script src="external/js/system-polyfills.js"></script>
-    <script src="external/js/angular2-polyfills.js"></script>
-    <script src="external/js/Rx.js"></script>
-    <script src="external/js/angular2.js"></script>
+    <script src="externals/js/system.js"></script>
+    <script src="externals/js/system-polyfills.js"></script>
+    <script src="externals/js/angular2-polyfills.js"></script>
+    <script src="externals/js/Rx.js"></script>
+    <script src="externals/js/angular2.js"></script>
     <!-- endinject -->
 
     <!-- inject:css -->
-    <link rel="stylesheet" href="external/css/bootstrap.min.css">
+    <link rel="stylesheet" href="externals/css/bootstrap.min.css">
     <!-- endinject -->
 
     <!-- SystemJS configuration -->
@@ -31,7 +31,14 @@
 
 <!-- 3. Display the application -->
 <body>
-    <my-app>Loading...</my-app>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>test</h1>
+        </div>
+        <my-app>Loading...</my-app>
+    </div>
+</div>
 </body>
 
 </html>
